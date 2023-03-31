@@ -1,0 +1,49 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="absolute top-4 left-4">
+  <a href="{% url 'nutritions' %}" class="hover:bg-blue-400 group flex items-center rounded-md bg-blue-500 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
+    <svg class="mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6" />
+    </svg>
+    Back
+  </a>
+</div>
+
+
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-lg">
+        <form
+        method="POST"
+        class="mt-6 mb-0 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
+        enctype="multipart/form-data"
+        >
+        {% csrf_token %}
+        
+        {% for field in form %}
+            <div>
+                <label class="sr-only">Text 1</label>
+                <div class="relative">
+                {{field}}
+                </div>
+                <div class="w-full pl-4 p-1 text-sm text-blue-500">
+                  {% for error in field.errors %}
+                    {{error}}
+                  {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+
+        <button
+          type="submit"
+          class="block w-full rounded-lg bg-blue-500 px-5 py-3 text-sm font-medium text-white"
+        >
+          Submit
+        </button>
+      </form>
+      
+    </div>
+  </div>
+  
+{% endblock content %}
