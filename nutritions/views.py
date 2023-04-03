@@ -27,6 +27,16 @@ def nutritions(request):
     return render(request, 'nutritions/nutritions.html', context=context)
 
 
+def nutrition(request, pk):
+    nutrition = get_object_or_404(Nutrition, id=pk)
+
+
+    context = {
+        'nutrition': nutrition,
+    }
+    return render(request, 'nutritions/single-nutrition.html', context=context)
+
+
 def create_nutrition(request):
 
     if request.method == 'POST':

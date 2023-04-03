@@ -1,0 +1,162 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+
+<div class="bg-white py-12 sm:py-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+      <div class="mx-auto max-w-2xl sm:text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{nutrition.name}}</h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600">{{nutrition.description}}</p>
+      </div>
+      
+
+      
+    <div class="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+
+        <div class="p-8 sm:p-10 lg:flex-auto">
+
+          <div class="overflow-x-auto">
+            <table class="table w-full">
+              <thead>
+                <tr>
+                  <th class="border px-4 py-2">Nutrition Facts</th>
+                  <th class="border px-4 py-2">Amount Per Portion</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% if nutrition.calories is not None %}
+                <tr>
+                  <td class="border px-4 py-2">Calories</td>
+                  <td class="border px-4 py-2">{{ nutrition.calories }}</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.total_fat is not None %}
+                <tr>
+                  <td class="border px-4 py-2">Total Fat</td>
+                  <td class="border px-4 py-2">{{ nutrition.total_fat }}g</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.saturated_fat is not None %}
+                <tr>
+                  <td class="border px-4 py-2 pl-6">• Saturated Fat</td>
+                  <td class="border px-4 py-2">{{ nutrition.saturated_fat }}g</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.sodium is not None %}
+                <tr>
+                  <td class="border px-4 py-2">Sodium</td>
+                  <td class="border px-4 py-2">{{ nutrition.sodium }}mg</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.total_carbohydrate is not None %}
+                <tr>
+                  <td class="border px-4 py-2">Total Carbohydrate</td>
+                  <td class="border px-4 py-2">{{ nutrition.total_carbohydrate }}g</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.dietary_fiber is not None %}
+                <tr>
+                  <td class="border px-4 py-2 pl-6">• Dietary Fiber</td>
+                  <td class="border px-4 py-2">{{ nutrition.dietary_fiber }}g</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.sugar is not None %}
+                <tr>
+                  <td class="border px-4 py-2 pl-6">• Sugar</td>
+                  <td class="border px-4 py-2">{{ nutrition.sugar }}g</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.protein is not None %}
+                <tr>
+                  <td class="border px-4 py-2">Protein</td>
+                  <td class="border px-4 py-2">{{ nutrition.protein }}g</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.vitamin_D is not None %}
+                <tr>
+                  <td class="border px-4 py-2">Vitamin D</td>
+                  <td class="border px-4 py-2">{{ nutrition.vitamin_D }}mcg</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.calcium is not None %}
+                <tr>
+                  <td class="border px-4 py-2">Calcium</td>
+                  <td class="border px-4 py-2">{{ nutrition.calcium }}mg</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.iron is not None %}
+                <tr>
+                  <td class="border px-4 py-2">Iron</td>
+                  <td class="border px-4 py-2">{{ nutrition.iron }}mg</td>
+                </tr>
+                {% endif %}
+                {% if nutrition.potassium is not None %}
+                <tr>
+                  <td class="border px-4 py-2">Potassium</td>
+                  <td class="border px-4 py-2">{{ nutrition.potassium }}mg</td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+          </div>
+          
+          
+          
+        </div>
+
+
+        <!-- <div class="p-8 sm:p-10 lg:flex-auto">
+          <h3 class="text-2xl font-bold tracking-tight text-gray-900">Lifetime membership</h3>
+          <p class="mt-6 text-base leading-7 text-gray-600">Lorem ipsum dolor sit amet consect etur adipisicing elit. Itaque amet indis perferendis blanditiis repellendus etur quidem assumenda.</p>
+          <div class="mt-10 flex items-center gap-x-4">
+            <h4 class="flex-none text-sm font-semibold leading-6 text-indigo-600">What’s included</h4>
+            <div class="h-px flex-auto bg-gray-100"></div>
+          </div>
+          <ul role="list" class="mt-8 grid grid-cols-1 gap-4 text-sm leading-6 text-gray-600 sm:grid-cols-2 sm:gap-6">
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+              </svg>
+              Private forum access
+            </li>
+  
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+              </svg>
+              Member resources
+            </li>
+  
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+              </svg>
+              Entry to annual conference
+            </li>
+  
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-indigo-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+              </svg>
+              Official member t-shirt
+            </li>
+          </ul>
+        </div>  -->
+
+       
+        <div class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+          <div class="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16 h-full" id="use-all-space">
+            <div class="nutr-img-div">
+                <img src="{{nutrition.image.url}}" alt="Image" class="nutr-img mx-auto block max-h-0.5">
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+  
+
+{% endblock content %}
