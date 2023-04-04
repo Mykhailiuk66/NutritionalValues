@@ -1,14 +1,20 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
+
 from .models import Nutrition
 from .forms import NutritionForm
 # Create your views here.
 
 def nutritions(request):
-    nutritions = Nutrition.objects.all()
-    paginator = Paginator(nutritions, 8)
+    search = request.GET.get('search', '')
 
+    nutritions = Nutrition.objects.filter(
+        Q(name__icontains=search) | Q(description__icontains=search)
+    )
+
+    paginator = Paginator(nutritions, 8)
     try:
         page_num = int(request.GET.get('page', 1))
         if page_num > paginator.num_pages: page_num = paginator.num_pages
@@ -16,13 +22,13 @@ def nutritions(request):
     except:
         page_num = 1
 
-
     queryset = paginator.get_page(page_num)
     page_range = paginator.get_elided_page_range(page_num, on_each_side=2, on_ends=1)
 
     context = {
         'queryset': queryset,
         'page_range': page_range,
+        'search': search,
     }
     return render(request, 'nutritions/nutritions.html', context=context)
 
