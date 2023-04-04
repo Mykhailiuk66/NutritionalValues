@@ -1,3 +1,12 @@
 .nutr-img{
     min-height: 10rem;
 }
+
+.alert {
+    transition: opacity 0.5s ease-out;
+  }
+  
+  .alert.fade {
+    opacity: 0;
+  }
+  

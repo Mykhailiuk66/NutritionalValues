@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
+from django.contrib import messages
 
 from .models import Nutrition
 from .forms import NutritionForm
@@ -53,7 +54,7 @@ def create_nutrition(request):
 
             return redirect('nutritions')
         else:
-            print("Form is not valid")
+            messages.error(request, "Something went wrong")
     else:
         form = NutritionForm()
 
@@ -75,7 +76,7 @@ def update_nutrition(request, pk):
 
             return redirect('nutritions')
         else:
-            print("Form is not valid")
+            print("Something went wrong")
     else:
         form = NutritionForm(instance=nutrition)
 

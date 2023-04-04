@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="{% static 'styles/main.css' %}">  
   <script src="https://cdn.tailwindcss.com"></script>
 
-
   {% block components %}
 
   {% endblock components %}
@@ -26,8 +25,13 @@
 
   {% include 'navbar.html' %}
 
+  {% include 'alert.html' %}
+
 	{% block content %}
 
   {% endblock content %}
+
+  <script src="{% static 'js/main.js' %}"></script>
+
 </body>
 </html>
